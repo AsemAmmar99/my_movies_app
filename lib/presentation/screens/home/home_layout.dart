@@ -21,6 +21,8 @@ class _HomeLayoutState extends State<HomeLayout> {
   void initState() {
     cubit = AppCubit.get(context);
     cubit.getMovies();
+    cubit.getTVShows();
+    cubit.getPersons();
     super.initState();
   }
 
@@ -29,7 +31,7 @@ class _HomeLayoutState extends State<HomeLayout> {
     return BlocBuilder<AppCubit, AppState>(
       builder: (context, state) {
         return TweenAnimationBuilder(
-          tween: ColorTween(begin: black, end: darkRed),
+          tween: ColorTween(begin: black, end: lightBrown),
           duration: const Duration(milliseconds: 4000),
           builder: (BuildContext context, Color? value, Widget? child) =>
               Scaffold(

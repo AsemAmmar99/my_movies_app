@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:my_movies_app/constants/constants.dart';
-import 'package:my_movies_app/constants/screens.dart' as screens;
-import 'package:my_movies_app/data/remote/responses/movies/movies_response.dart';
+import 'package:my_movies_app/data/remote/responses/tv_shows/tv_shows_response.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../constants/screens.dart' as screens;
 import '../styles/colors.dart';
 import '../widgets/default_cached_network_image.dart';
 import '../widgets/default_text.dart';
 
-class MoviesListItem extends StatelessWidget {
-  const MoviesListItem({Key? key, required this.movieModel}) : super(key: key);
+class TVShowsListItem extends StatelessWidget {
+  const TVShowsListItem({Key? key, required this.tvShowModel}) : super(key: key);
 
-  final MoviesResults movieModel;
+  final TVShowsResults tvShowModel;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        Navigator.pushNamed(context, screens.movieDetails, arguments: movieModel);
+        Navigator.pushNamed(context, screens.tvShowDetails, arguments: tvShowModel);
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.h),
@@ -32,7 +32,7 @@ class MoviesListItem extends StatelessWidget {
           children: [
             Flexible(
               child: DefaultText(
-               text: movieModel.title,
+               text: tvShowModel.name,
                 fontSize: 18.sp,
                 fontWeight: FontWeight.bold,
                 color: lightRed,
@@ -44,7 +44,7 @@ class MoviesListItem extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsetsDirectional.only(top: 2.h, bottom: 1.h),
                 child: DefaultCachedNetworkImage(
-                  imageURL: '$imagesBaseURL${movieModel.posterPath}',
+                  imageURL: '$imagesBaseURL${tvShowModel.posterPath}',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -55,7 +55,7 @@ class MoviesListItem extends StatelessWidget {
               children: [
                 Flexible(
                   child: DefaultText(
-                    text: movieModel.overview,
+                    text: tvShowModel.overview,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.bold,
                     color: white,
